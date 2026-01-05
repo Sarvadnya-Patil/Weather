@@ -95,7 +95,7 @@ app.get('/api/search', async (req, res) => {
 });
 
 // All other requests -> Serve React App
-app.get('/*', (req, res) => {
+app.get('/:path*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
