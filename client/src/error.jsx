@@ -1,7 +1,8 @@
 import React from "react";
+import { CloudOff, RefreshCw } from "lucide-react";
 import "./error.css";
 
-const WeatherError = () => {
+const WeatherError = ({ onRetry, message }) => {
     return (
         <div className="app-root">
             <header className="top-bar">
@@ -18,17 +19,18 @@ const WeatherError = () => {
 
             <main className="wrapper">
                 <section className="error-card">
-                    <div className="error-icon" />
+                    <div className="error-icon">
+                        <CloudOff size={32} strokeWidth={2} />
+                    </div>
 
                     <h1 className="error-title">Something went wrong</h1>
 
                     <p className="error-text">
-                        We couldn’t connect to the server (API error). Please try again in a
-                        few moments.
+                        {message || "We couldn’t connect to the server (API error). Please try again in a few moments."}
                     </p>
 
-                    <button className="retry-btn">
-                        <span className="retry-icon" />
+                    <button className="retry-btn" onClick={onRetry}>
+                        <RefreshCw size={18} className="retry-icon-svg" />
                         <span>Retry</span>
                     </button>
                 </section>
